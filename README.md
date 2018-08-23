@@ -95,7 +95,7 @@ Putting it very simply, ALSA provides us with two virtual devices, one of them i
 
 In ALSA land a single audio device is identified by a device name that has the pattern 'hw:x,y,z' where 'x' is the card number, 'y' is the device number, and 'z' is the subdevice number. So in our example above the loopback module gives us a card 'card2'
 , it has two devices 'device 0' and 'device 1', and each of the devices have 8 subdevices 0-7. So coming back to how the loopback module works, all the connected speaker-mic pairs would be: 
-
+```
 'Speaker'   ====> 'Mic'
 'hw:2,1,0'  ====> 'hw:2,0,0'
 'hw:2,1,1'  ====> 'hw:2,0,1'
@@ -105,7 +105,7 @@ In ALSA land a single audio device is identified by a device name that has the p
 'hw:2,1,5'  ====> 'hw:2,0,5'
 'hw:2,1,6'  ====> 'hw:2,0,6'
 'hw:2,1,7'  ====> 'hw:2,0,7'
-
+```
 NOTE: All the subdevices in 'device 0' are Mics/Srcs - readable - and all those in 'device 1' are Speakers/Sinks - writable. Which means that anything written on 'hw:2,1,n' would be read on 'hw:2,0,n' where n is between 0-7 inclusive.
 
 
