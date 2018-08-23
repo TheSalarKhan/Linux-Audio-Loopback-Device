@@ -85,7 +85,7 @@ card 2: Loopback [Loopback], device 1: Loopback PCM [Loopback PCM]
   Subdevice #7: subdevice #7
 ```
 
-We can see that card1 had the hardware microhone whereas card2 is our loopback.
+We can see that card1 has the hardware microhone whereas card2 is our loopback.
 
 
 
@@ -129,3 +129,5 @@ $ gst-launch-1.0 audiotestsrc ! alsasink device="hw:2,1,3"
 ```
 $ gst-launch-1.0 alsasrc device="hw:2,0,3" ! alsasink
 ```
+
+What this experiment demonstrates is that what is written to one end of the loopback module can be read from the other end. This could be used for softwares like voice changers, a pipeline for that would be that you read from the hardware mic, apply some affects and write the resulting stuff to loopback sink, then set the loopback mic as the default microphone, this way any applications that read from the mic will be reading the distorted audio from the loopback mic.
